@@ -16,6 +16,7 @@
  */
 package org.apache.seatunnel.app.thirdparty.framework;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.seatunnel.api.configuration.util.OptionRule;
 import org.apache.seatunnel.api.source.SupportColumnProjection;
 import org.apache.seatunnel.api.table.factory.Factory;
@@ -41,6 +42,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
@@ -62,33 +64,45 @@ public class PluginDiscoveryUtil {
         if (!pluginType.equals(PluginType.SOURCE)) {
             throw new UnsupportedOperationException("ONLY support plugin type source");
         }
-        Path path = new SeaTunnelSinkPluginDiscovery().getPluginDir();
-        List<Factory> factories;
-        if (path.toFile().exists()) {
-            List<URL> files = FileUtils.searchJarFiles(path);
-            factories =
-                    FactoryUtil.discoverFactories(new URLClassLoader(files.toArray(new URL[0])));
-        } else {
-            factories =
-                    FactoryUtil.discoverFactories(Thread.currentThread().getContextClassLoader());
+        List<Factory> factories = null;
+        SeaTunnelSinkPluginDiscovery seaTunnelSinkPluginDiscovery =
+            new SeaTunnelSinkPluginDiscovery();
+        Map<PluginIdentifier, String> allSupportedPlugins =
+            seaTunnelSinkPluginDiscovery.getAllSupportedPlugins(pluginType);
+        for (Entry<PluginIdentifier, String> entry : allSupportedPlugins.entrySet()) {
+            PluginIdentifier pluginIdentifier = entry.getKey();
+            List<PluginIdentifier> pluginIdentifiers = new ArrayList<>();
+            pluginIdentifiers.add(pluginIdentifier);
+            List<URL> files = seaTunnelSinkPluginDiscovery.getPluginJarPaths(pluginIdentifiers);
+            if (CollectionUtils.isNotEmpty(files)) {
+                factories =
+                    FactoryUtil.discoverFactories(
+                        new URLClassLoader(files.toArray(new URL[0])));
+            } else {
+                factories =
+                    FactoryUtil.discoverFactories(
+                        Thread.currentThread().getContextClassLoader());
+            }
         }
         Map<PluginIdentifier, ConnectorFeature> featureMap = new ConcurrentHashMap<>();
-        factories.forEach(
+        if (CollectionUtils.isNotEmpty(factories)) {
+            factories.forEach(
                 plugin -> {
                     if (TableSourceFactory.class.isAssignableFrom(plugin.getClass())) {
                         TableSourceFactory tableSourceFactory = (TableSourceFactory) plugin;
                         PluginIdentifier info =
-                                PluginIdentifier.of(
-                                        "seatunnel",
-                                        PluginType.SOURCE.getType(),
-                                        plugin.factoryIdentifier());
+                            PluginIdentifier.of(
+                                "seatunnel",
+                                PluginType.SOURCE.getType(),
+                                plugin.factoryIdentifier());
                         featureMap.put(
-                                info,
-                                new ConnectorFeature(
-                                        SupportColumnProjection.class.isAssignableFrom(
-                                                tableSourceFactory.getSourceClass())));
+                            info,
+                            new ConnectorFeature(
+                                SupportColumnProjection.class.isAssignableFrom(
+                                    tableSourceFactory.getSourceClass())));
                     }
                 });
+        }
         return featureMap;
     }
 

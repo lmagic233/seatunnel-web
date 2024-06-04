@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.apache.seatunnel</groupId>
         <artifactId>seatunnel-web</artifactId>
-        <version>${revision}</version>
+        <version>1.0.0-jdl-SNAPSHOT</version>
     </parent>
 
     <artifactId>seatunnel-server</artifactId>

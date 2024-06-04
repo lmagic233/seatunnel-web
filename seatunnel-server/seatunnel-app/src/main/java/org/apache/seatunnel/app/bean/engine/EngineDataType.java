@@ -16,7 +16,6 @@
  */
 package org.apache.seatunnel.app.bean.engine;
 
-import org.apache.seatunnel.api.table.catalog.DataTypeConvertException;
 import org.apache.seatunnel.api.table.catalog.DataTypeConvertor;
 import org.apache.seatunnel.api.table.type.ArrayType;
 import org.apache.seatunnel.api.table.type.BasicType;
@@ -86,21 +85,21 @@ public class EngineDataType {
             implements DataTypeConvertor<SeaTunnelDataType<?>> {
 
         @Override
-        public SeaTunnelDataType<?> toSeaTunnelType(String engineDataType) {
-            return DATA_TYPE_MAP.get(engineDataType.toLowerCase(Locale.ROOT)).getRawType();
+        public SeaTunnelDataType<?> toSeaTunnelType(String field, String connectorDataType) {
+            return DATA_TYPE_MAP.get(connectorDataType.toLowerCase(Locale.ROOT)).getRawType();
         }
 
         @Override
         public SeaTunnelDataType<?> toSeaTunnelType(
-                SeaTunnelDataType<?> seaTunnelDataType, Map<String, Object> map)
-                throws DataTypeConvertException {
-            return seaTunnelDataType;
+            String field, SeaTunnelDataType<?> connectorDataType, Map<String, Object> dataTypeProperties) {
+            return connectorDataType;
         }
 
         @Override
         public SeaTunnelDataType<?> toConnectorType(
-                SeaTunnelDataType<?> seaTunnelDataType, Map<String, Object> map)
-                throws DataTypeConvertException {
+            String field,
+            SeaTunnelDataType<?> seaTunnelDataType,
+            Map<String, Object> dataTypeProperties) {
             return seaTunnelDataType;
         }
 

@@ -72,7 +72,7 @@ const NodeSetting = defineComponent({
           await configurationFormRef.value.setValues(props.nodeInfo)
         }
         if (props.show && modelRef.value) {
-          modelRef.value.setSelectFields(
+          modelRef.value.setSelectFields(// @ts-ignore
             props.nodeInfo.selectTableFields?.tableFields || []
           )
         }
@@ -91,8 +91,11 @@ const NodeSetting = defineComponent({
                   displayDirective='show'
                 >
                   <ConfigurationForm
+                      // @ts-ignore
                     nodeType={props.nodeInfo.type}
+                      // @ts-ignore
                     nodeId={props.nodeInfo.pluginId}
+                      // @ts-ignore
                     transformType={props.nodeInfo.connectorType}
                     ref={configurationFormRef}
                     onTableNameChange={handleChangeTable}
@@ -105,10 +108,15 @@ const NodeSetting = defineComponent({
                 >
                   <NodeModeModal
                     ref={modelRef}
+                      // @ts-ignore
                     type={props.nodeInfo.type}
+                      // @ts-ignore
                     transformType={props.nodeInfo.connectorType}
+                      // @ts-ignore
                     predecessorsNodeId={props.nodeInfo.predecessorsNodeId}
+                      // @ts-ignore
                     currentNodeId={props.nodeInfo.pluginId}
+                      // @ts-ignore
                     schemaError={props.nodeInfo.schemaError}
                     refForm={configurationFormRef}
                   />

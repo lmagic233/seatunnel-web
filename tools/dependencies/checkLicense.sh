@@ -31,7 +31,7 @@ ls /tmp/seatunnel-dependencies | sort > all-dependencies.txt
 echo "start"
 
 # licenses
-echo '=== Self modules: ' && ./mvnw --batch-mode --quiet -Dexec.executable='echo' -Dexec.args='${project.artifactId}-${project.version}.jar' exec:exec | tee self-modules.txt
+echo '=== Self modules: ' && ./mvnw --batch-mode --quiet -Dexec.executable='echo' -Dexec.args='${project.artifactId}-1.0.0-jdl-SNAPSHOT.jar' exec:exec | tee self-modules.txt
 
 # Exclude all self modules(jars) to generate all third-party dependencies
 echo '=== Third party dependencies: ' && grep -vf self-modules.txt all-dependencies.txt | sort | uniq | tee third-party-dependencies.txt

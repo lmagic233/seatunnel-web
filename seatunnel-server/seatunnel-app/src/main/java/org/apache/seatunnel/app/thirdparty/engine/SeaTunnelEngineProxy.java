@@ -20,6 +20,7 @@ import org.apache.seatunnel.engine.client.SeaTunnelClient;
 import org.apache.seatunnel.engine.client.job.JobClient;
 import org.apache.seatunnel.engine.common.config.ConfigProvider;
 import org.apache.seatunnel.engine.common.config.JobConfig;
+import org.apache.seatunnel.engine.common.config.SeaTunnelConfig;
 import org.apache.seatunnel.engine.core.job.JobDAGInfo;
 
 import com.hazelcast.client.config.ClientConfig;
@@ -115,7 +116,8 @@ public class SeaTunnelEngineProxy {
         JobConfig jobConfig = new JobConfig();
         jobConfig.setName(jobInstanceId + "_job");
         try {
-            seaTunnelClient.restoreExecutionContext(filePath, jobConfig, jobEngineId).execute();
+            SeaTunnelConfig seaTunnelConfig = ConfigProvider.locateAndGetSeaTunnelConfig();
+            seaTunnelClient.restoreExecutionContext(filePath, jobConfig, seaTunnelConfig, jobEngineId).execute();
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {

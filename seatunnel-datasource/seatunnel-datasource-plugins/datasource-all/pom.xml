@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.apache.seatunnel</groupId>
         <artifactId>seatunnel-datasource-plugins</artifactId>
-        <version>${revision}</version>
+        <version>1.0.0-jdl-SNAPSHOT</version>
     </parent>
 
     <artifactId>datasource-all</artifactId>
@@ -28,79 +28,79 @@
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-jdbc-clickhouse</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-jdbc-hive</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-jdbc-mysql</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-jdbc-oracle</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-jdbc-postgresql</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-jdbc-tidb</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-jdbc-sqlserver</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-jdbc-starrocks</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-kafka</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-elasticsearch</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-starrocks</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-mysql-cdc</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-s3</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-sqlserver-cdc</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.seatunnel</groupId>
             <artifactId>datasource-jdbc-db2</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0-jdl-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

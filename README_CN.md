@@ -145,21 +145,21 @@ cd seatunnel-web
 sh build.sh code
 ```
 
-然后您可以在 `seatunnel-web/seatunnel-web-dist/target/apache-seatunnel-web-${project.version}.tar.gz` 目录中获得安装包。
+然后您可以在 `seatunnel-web/seatunnel-web-dist/target/apache-seatunnel-web-1.0.0-jdl-SNAPSHOT.tar.gz` 目录中获得安装包。
 
 #### 3.3 安装
 
-将 `apache-seatunnel-web-${project.version}.tar.gz` 复制到服务器节点并解压。
+将 `apache-seatunnel-web-1.0.0-jdl-SNAPSHOT.tar.gz` 复制到服务器节点并解压。
 
 ```shell
-tar -zxvf apache-seatunnel-web-${project.version}.tar.gz
+tar -zxvf apache-seatunnel-web-1.0.0-jdl-SNAPSHOT.tar.gz
 ```shell
-tar -zxvf apache-seatunnel-web-${project.version}.tar.gz
+tar -zxvf apache-seatunnel-web-1.0.0-jdl-SNAPSHOT.tar.gz
 ```
 
 #### 3.4 初始化数据库
 
-1. 编辑 `apache-seatunnel-web-${project.version}/script/seatunnel_server_env.sh` 文件, 填写已安装的数据库 address, port, username, and password. 例如:
+1. 编辑 `apache-seatunnel-web-1.0.0-jdl-SNAPSHOT/script/seatunnel_server_env.sh` 文件, 填写已安装的数据库 address, port, username, and password. 例如:
 
     ```
     export HOSTNAME="localhost"
@@ -167,21 +167,21 @@ tar -zxvf apache-seatunnel-web-${project.version}.tar.gz
     export USERNAME="root"
     export PASSWORD="123456"
     ```
-2. 运行初始化脚本 `sh apache-seatunnel-web-${project.version}/script/init_sql.sh` 如果操作过程中没有错误,表示初始化成功。
+2. 运行初始化脚本 `sh apache-seatunnel-web-1.0.0-jdl-SNAPSHOT/script/init_sql.sh` 如果操作过程中没有错误,表示初始化成功。
 
 #### 3.5 配置应用并运行 SeaTunnel Web 后端服务
 
-* 编辑 `apache-seatunnel-web-${project.version}/conf/application.yml` 在文件中填写数据库连接信息和数据服务接口相关信息。
+* 编辑 `apache-seatunnel-web-1.0.0-jdl-SNAPSHOT/conf/application.yml` 在文件中填写数据库连接信息和数据服务接口相关信息。
 
 ![image](docs/images/application_config.png)
 
-* 复制 `$SEATUNNEL_HOME/config/hazelcast-client.yaml` 到 `apache-seatunnel-web-${project.version}/conf/`
-* 复制 `apache-seatunnel-2.3.3-SNAPSHOT/connectors/plugin-mapping.properties` 文件到 `apache-seatunnel-web-${project.version}/conf/` 目录.
+* 复制 `$SEATUNNEL_HOME/config/hazelcast-client.yaml` 到 `apache-seatunnel-web-1.0.0-jdl-SNAPSHOT/conf/`
+* 复制 `apache-seatunnel-2.3.3-SNAPSHOT/connectors/plugin-mapping.properties` 文件到 `apache-seatunnel-web-1.0.0-jdl-SNAPSHOT/conf/` 目录.
 
 #### 3.6 运行 SeaTunnel Web
 
 ```shell
-cd apache-seatunnel-web-${project.version}
+cd apache-seatunnel-web-1.0.0-jdl-SNAPSHOT
 sh bin/seatunnel-backend-daemon.sh start
 ```
 

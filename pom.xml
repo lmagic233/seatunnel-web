@@ -25,7 +25,7 @@
 
     <groupId>org.apache.seatunnel</groupId>
     <artifactId>seatunnel-web</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0-jdl-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>SeaTunnel</name>
@@ -541,7 +541,7 @@
             <dependency>
                 <groupId>org.apache.seatunnel</groupId>
                 <artifactId>seatunnel-datasource-client</artifactId>
-                <version>${project.version}</version>
+                <version>1.0.0-jdl-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.google.auto.service</groupId>
@@ -553,7 +553,7 @@
             <dependency>
                 <groupId>org.apache.seatunnel</groupId>
                 <artifactId>datasource-s3</artifactId>
-                <version>${project.version}</version>
+                <version>1.0.0-jdl-SNAPSHOT</version>
                 <scope>test</scope>
             </dependency>
 
@@ -1254,7 +1254,7 @@
 
     <build>
 
-        <finalName>${project.artifactId}-${project.version}</finalName>
+        <finalName>${project.artifactId}-1.0.0-jdl-SNAPSHOT</finalName>
 
         <pluginManagement>
             <plugins>
@@ -1428,7 +1428,7 @@
                     <version>${maven-dependency-plugin.version}</version>
                 </plugin>
 
-                <plugin>
+                <!--<plugin>
                     <groupId>com.diffplug.spotless</groupId>
                     <artifactId>spotless-maven-plugin</artifactId>
                     <version>${spotless.version}</version>
@@ -1501,7 +1501,7 @@
                             <phase>compile</phase>
                         </execution>
                     </executions>
-                </plugin>
+                </plugin>-->
 
             </plugins>
         </pluginManagement>
@@ -1520,7 +1520,7 @@
                 <configuration>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <tagNameFormat>@{project.version}</tagNameFormat>
-                    <tagBase>${project.version}</tagBase>
+                    <tagBase>1.0.0-jdl-SNAPSHOT</tagBase>
                 </configuration>
                 <dependencies>
                     <dependency>
